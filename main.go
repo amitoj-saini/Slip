@@ -25,7 +25,7 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	// routes
-	http.HandleFunc("/", middleware.AuthHandler(handlers.Home))
+	http.HandleFunc("/", middleware.AuthHandler(handlers.Home, db))
 
 	// find addr user wants to host serv on
 	addr := config.GetEnv("ADDR", ":8080")
